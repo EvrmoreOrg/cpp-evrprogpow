@@ -69,7 +69,6 @@ if(ETHASH_BUILD_TESTS)
     add_subdirectory(test)
 endif()
 
-
 install(
     DIRECTORY
     ${include_dir}/

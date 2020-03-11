@@ -313,11 +313,11 @@ TEST(ethash, get_epoch_number)
 {
     EXPECT_EQ(get_epoch_number(0), 0);
     EXPECT_EQ(get_epoch_number(1), 0);
-    EXPECT_EQ(get_epoch_number(29999), 0);
-    EXPECT_EQ(get_epoch_number(30000), 1);
-    EXPECT_EQ(get_epoch_number(30001), 1);
-    EXPECT_EQ(get_epoch_number(30002), 1);
-    EXPECT_EQ(get_epoch_number(5000000), 166);
+    EXPECT_EQ(get_epoch_number(7499), 0);
+    EXPECT_EQ(get_epoch_number(7500), 1);
+    EXPECT_EQ(get_epoch_number(7501), 1);
+    EXPECT_EQ(get_epoch_number(7502), 1);
+    EXPECT_EQ(get_epoch_number(1245000), 166);
 }
 
 TEST(ethash, light_cache)
