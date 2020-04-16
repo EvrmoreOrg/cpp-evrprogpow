@@ -28,8 +28,8 @@ if(NOT WIN32)
 endif()
 
 HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.20.35.tar.gz"
-    SHA1 "6e3cb4c333b76803a83c56fcbca3b0bfd9f96f27"
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.253.tar.gz"
+    SHA1 "88ea6d37c897a81a080eb9ae0f69d7807bbb3c73"
 )
 
 project(ethash)
@@ -43,9 +43,6 @@ if(CABLE_COMPILER_GNULIKE)
     option(ETHASH_NATIVE "Build for native CPU" OFF)
     if(ETHASH_NATIVE)
         add_compile_options(-march=native)
-    else()
-        # Tune for currently most common CPUs.
-        cable_add_cxx_compiler_flag_if_supported(-mtune=generic)
     endif()
 elseif(MSVC AND CMAKE_SIZEOF_VOID_P EQUAL 4)
     # For Win32 builds allow allocating more than 2 GB of memory.
