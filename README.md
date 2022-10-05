@@ -1,9 +1,8 @@
-# Ethash
+# Evrprogpow
 
-[![readme style standard](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+> C/C++ implementation of evrprogpow – the Evrmore Proof of Work algorithm
 
-> C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm
-
+This repository was forked from https://github.com/RavenCommunity/cpp-kawpow
 
 ## Table of Contents
 
@@ -60,6 +59,7 @@ up to 40-bit number, so some additional improvement can be done in future.
     
 ## Maintainer
 
+Hans Schmidt [@Hans-Schmidt]  
 Paweł Bylica [@chfast]
 
 ## License
