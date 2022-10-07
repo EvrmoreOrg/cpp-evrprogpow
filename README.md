@@ -1,6 +1,7 @@
 # Evrprogpow
 
 > C/C++ implementation of evrprogpow – the Evrmore Proof of Work algorithm
+> Note: This is the reference implementation of evrprogpow
 
 This repository was forked from https://github.com/RavenCommunity/cpp-kawpow
 
