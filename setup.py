@@ -77,7 +77,7 @@ setup(
     license='Apache License, Version 2.0',
 
     package_dir={'': 'bindings/python'},
-    packages=['ethash'],
+    packages=['evrhash'],
     cffi_modules=['bindings/python/ethash/_build.py:ffibuilder'],
 
     python_requires='>=3.5',
