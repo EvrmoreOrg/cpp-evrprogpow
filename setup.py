@@ -67,7 +67,7 @@ class build_ext(setuptools_build_ext):
 
 
 setup(
-    name='ethash',
+    name='evrhash',
     version='0.5.1-alpha.1',
     description=
     "C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm",
@@ -77,7 +77,7 @@ setup(
     license='Apache License, Version 2.0',
 
     package_dir={'': 'bindings/python'},
-    packages=['ethash'],
+    packages=['evrhash'],
     cffi_modules=['bindings/python/ethash/_build.py:ffibuilder'],
 
     python_requires='>=3.5',

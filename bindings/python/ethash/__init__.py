@@ -45,3 +45,17 @@ def verify(epoch_number, header_hash, mix_hash, nonce, boundary):
     c_boundary[0].str = boundary
 
     return lib.ethash_verify(ctx, c_header_hash, c_mix_hash, nonce, c_boundary)
+
+def light_verify(header_hash, mix_hash, nonce):
+    if len(header_hash) != 32:
+        raise ValueError('header_hash must have length of 32')
+
+    c_header_hash = ffi.new('union ethash_hash256*')
+    c_header_hash[0].str = header_hash
+
+    c_mix_hash = ffi.new('union ethash_hash256*')
+    c_mix_hash[0].str = mix_hash
+
+    result = lib.light_verify(c_header_hash, c_mix_hash, nonce)
+    final_hash = ffi.unpack(result.str, len(result.str))
+    return final_hash
