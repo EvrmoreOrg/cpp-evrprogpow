@@ -71,14 +71,14 @@ setup(
     version='0.5.1-alpha.1',
     description=
     "C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm",
-    url='https://github.com/chfast/ethash',
+    url='https://github.com/EvrmoreOrg/cpp-evrprogpow',
     author='Paweł Bylica',
     author_email='pawel@ethereum.org',
     license='Apache License, Version 2.0',
 
     package_dir={'': 'bindings/python'},
     packages=['evrhash'],
-    cffi_modules=['bindings/python/ethash/_build.py:ffibuilder'],
+    cffi_modules=['bindings/python/evrhash/_build.py:ffibuilder'],
 
     python_requires='>=3.5',
     setup_requires=['cffi>=1.12'],
