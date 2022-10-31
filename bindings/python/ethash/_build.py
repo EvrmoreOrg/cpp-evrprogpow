@@ -63,7 +63,7 @@ bool ethash_verify(const struct ethash_epoch_context* context,
     const union ethash_hash256* header_hash, const union ethash_hash256* mix_hash, uint64_t nonce,
     const union ethash_hash256* boundary);
 
-union kawpow_hash256 light_verify(const union kawpow_hash256* header_hash, const union kawpow_hash256* mix_hash, uint64_t nonce);
+union ethash_hash256 light_verify(const union ethash_hash256* header_hash, const union ethash_hash256* mix_hash, uint64_t nonce);
 
 """)
 
