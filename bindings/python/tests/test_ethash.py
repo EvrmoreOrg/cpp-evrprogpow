@@ -4,7 +4,7 @@
 
 import unittest
 
-import ethash
+import evrhash
 
 
 class TestEthash(unittest.TestCase):
@@ -25,16 +25,16 @@ class TestEthash(unittest.TestCase):
                 'c00fa9caf9d87976ba469bcbe06713b4'
                 '35f091ef2769fb160cdab33d3670680e')
 
-        self.assertEqual(ethash.keccak_256(b'').hex(), h256)
-        self.assertEqual(ethash.keccak_512(b'').hex(), h512)
+        self.assertEqual(evrhash.keccak_256(b'').hex(), h256)
+        self.assertEqual(evrhash.keccak_512(b'').hex(), h512)
 
     def test_hash(self):
-        f, m = ethash.hash(0, self.header_hash, self.nonce)
+        f, m = evrhash.hash(0, self.header_hash, self.nonce)
         self.assertEqual(m, self.mix_hash)
         self.assertEqual(f, self.final_hash)
 
     def test_verify(self):
-        t = ethash.verify(0, self.header_hash, self.mix_hash, self.nonce,
+        t = evrhash.verify(0, self.header_hash, self.mix_hash, self.nonce,
                           self.final_hash)
         self.assertTrue(t)
         self.assertEqual(type(t), bool)
