@@ -26,6 +26,14 @@ cmake ..
 cmake --build .
 ```
 
+Build the evrhash module (often used in python for ElectrumX server;
+often done in a virtualenv)
+
+```
+python setup.py install
+```
+
+
 ## Usage
 
 See [ethash.hpp] for list of exported function and documentation.
