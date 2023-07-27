@@ -1,0 +1,102 @@
+# Runs CI tests and generates wheels
+#
+# * Supports Linux, macOS, and Windows with Python3
+#
+# Useful URLs:
+# * https://github.com/pypa/cibuildwheel
+# * https://github.com/actions/checkout
+# * https://github.com/actions/setup-python
+# * https://github.com/actions/upload-artifact
+# * https://github.com/marketplace/actions/cancel-workflow-action
+
+name: Build evrhash python wheels
+
+on: 
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # Linux + macOS + Windows Python 3
+  build_wheels:
+    name: Build wheel for ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu
+          - macos
+          - windows
+        python-version:
+#          - "3.8"
+          - "3.9"
+#          - "3.10"
+#        exclude:
+#          - os: windows
+#            python-version: 3.8
+
+    steps:
+    - name: Cancel previous runs
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+    - name: Check out the repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Create wheels + run tests
+      uses: pypa/cibuildwheel@v2.14.1
+      env:
+        CIBW_BUILD: cp39-*
+        CIBW_ARCHS_WINDOWS: AMD64
+
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheels
+        path: wheelhouse
+
+    - name: Generate .tar.gz
+      if: ${{ matrix.os }} == 'ubuntu'
+      run: |
+        python setup.py sdist
+        mv dist/evrhash*.tar.gz wheelhouse/
+
+  # Run linters
+#  linters:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v3
+#    - uses: actions/setup-python@v4
+#    - name: 'Run linters'
+#      run: |
+#       # python
+#        python3 -m pip install flake8
+#        python3 -m flake8 .
+#        # clinter
+#        find . -type f \( -iname "*.c" -o -iname "*.h" \) | xargs python3 scripts/internal/clinter.py
+
+  # Check sanity of .tar.gz + wheel files
+  check-dist:
+    needs: build_wheels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - uses: actions/download-artifact@v3
+        with:
+          name: wheels
+          path: wheelhouse
+      - run: |
+          python scripts/print_hashes.py wheelhouse/
+          pipx run twine check --strict wheelhouse/*
+          pipx run abi3audit --verbose --strict wheelhouse/*-abi3-*.whl

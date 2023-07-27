@@ -70,10 +70,10 @@ setup(
     name='evrhash',
     version='0.5.1-alpha.1',
     description=
-    "C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm",
+    "C/C++ implementation of Evrhash, the modified Programmable Proof of Work algorithm of Evrmore",
     url='https://github.com/EvrmoreOrg/cpp-evrprogpow',
-    author='Paweł Bylica',
-    author_email='pawel@ethereum.org',
+    author='Hans Schmidt',
+    author_email='hans_schm1dt@protonmail.com',
     license='Apache License, Version 2.0',
 
     package_dir={'': 'bindings/python'},
@@ -96,5 +96,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ],
 )
