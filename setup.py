@@ -72,8 +72,8 @@ setup(
     description=
     "C/C++ implementation of Evrhash, the modified Programmable Proof of Work algorithm of Evrmore",
     url='https://github.com/EvrmoreOrg/cpp-evrprogpow',
-    author='Hans Schmidt',
-    author_email='hans_schm1dt@protonmail.com',
+    author='Paweł Bylica',
+    author_email='pawel@ethereum.org',
     license='Apache License, Version 2.0',
 
     package_dir={'': 'bindings/python'},
