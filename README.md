@@ -17,6 +17,17 @@ This repository was forked from https://github.com/RavenCommunity/cpp-kawpow
 
 ## Install
 
+Build from source using CMake on Ubuntu 22.04
+
+```sh
+sudo apt install gcc-9 g++-9 libevent-dev
+
+mkdir build
+cd build
+cmake -DCMAKE_C_COMPILER=/usr/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 ..
+cmake --build .
+```
+
 Build from source using CMake.
 
 ```sh
