@@ -44,6 +44,12 @@ often done in a virtualenv)
 python setup.py install
 ```
 
+Build the evrhash module on Ubuntu 22.04
+
+```
+sudo apt-get install python3-wheel python3-pip
+sudo python3 setup.py install
+```
 
 ## Usage
 
